@@ -1,4 +1,3 @@
-```pascal
 program Soal4;
 
 var
@@ -8,7 +7,10 @@ var
   lagi: char;
 
 begin
-  repeat
+  lagi := 'Y';
+
+  while (lagi = 'Y') or (lagi = 'y') do
+  begin
     writeln('=== KALKULATOR SEDERHANA ===');
     writeln('1. Penjumlahan');
     writeln('2. Pengurangan');
@@ -18,71 +20,85 @@ begin
     write('Pilih operasi (1-5): ');
     readln(pilihan);
 
-    if (pilihan >= 1) and (pilihan <= 5) then
+    if pilihan = 1 then
     begin
       write('Masukkan angka pertama: ');
       readln(a);
-
       write('Masukkan angka kedua: ');
       readln(b);
 
-      case pilihan of
+      hasil := a + b;
+      writeln('Hasil: ', hasil:0:2);
+    end
 
-        1:
-        begin
-          hasil := a + b;
-          writeln('Hasil: ', hasil:0:2);
-        end;
+    else if pilihan = 2 then
+    begin
+      write('Masukkan angka pertama: ');
+      readln(a);
+      write('Masukkan angka kedua: ');
+      readln(b);
 
-        2:
-        begin
-          hasil := a - b;
-          writeln('Hasil: ', hasil:0:2);
-        end;
+      hasil := a - b;
+      writeln('Hasil: ', hasil:0:2);
+    end
 
-        3:
-        begin
-          hasil := a * b;
-          writeln('Hasil: ', hasil:0:2);
-        end;
+    else if pilihan = 3 then
+    begin
+      write('Masukkan angka pertama: ');
+      readln(a);
+      write('Masukkan angka kedua: ');
+      readln(b);
 
-        4:
-        begin
-          if b <> 0 then
-          begin
-            hasil := a / b;
-            writeln('Hasil: ', hasil:0:2);
-          end
-          else
-            writeln('Error: Pembagian dengan nol.');
-        end;
+      hasil := a * b;
+      writeln('Hasil: ', hasil:0:2);
+    end
 
-        5:
-        begin
-          ia := round(a);
-          ib := round(b);
+    else if pilihan = 4 then
+    begin
+      write('Masukkan angka pertama: ');
+      readln(a);
+      write('Masukkan angka kedua: ');
+      readln(b);
 
-          if ib <> 0 then
-          begin
-            writeln('DIV = ', ia div ib);
-            writeln('MOD = ', ia mod ib);
-          end
-          else
-            writeln('Error: Pembagian dengan nol.');
-        end;
-
+      if b <> 0 then
+      begin
+        hasil := a / b;
+        writeln('Hasil: ', hasil:0:2);
+      end
+      else
+      begin
+        writeln('Error: Pembagian dengan nol.');
       end;
     end
+
+    else if pilihan = 5 then
+    begin
+      write('Masukkan bilangan bulat pertama: ');
+      readln(ia);
+      write('Masukkan bilangan bulat kedua: ');
+      readln(ib);
+
+      if ib <> 0 then
+      begin
+        writeln('DIV = ', ia div ib);
+        writeln('MOD = ', ia mod ib);
+      end
+      else
+      begin
+        writeln('Error: Pembagian dengan nol.');
+      end;
+    end
+
     else
+    begin
       writeln('Pilihan operasi tidak valid.');
+    end;
 
     writeln;
     write('Apakah ingin melakukan perhitungan lagi? (Y/T): ');
     readln(lagi);
     writeln;
-
-  until (lagi = 'T') or (lagi = 't');
+  end;
 
   writeln('Program selesai.');
 end.
-```
